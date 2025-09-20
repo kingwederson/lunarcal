@@ -31,8 +31,7 @@ function calcularlunar(ano,mes,dia){
             dia30 = 0
       }
       if(dia30==0 && dia == 30){
-            document.getElementById("datajudaica").innerText = "The 30ᵗʰ day is not allowed."
-            return "The 30th day is not allowed."
+            dia = 29
       }
       if(dia < 1 || dia > 30){
             document.getElementById("datajudaica").innerText = "This day is not allowed."
