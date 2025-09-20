@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Calendário Lunissolar</title>
+      <script src="acumulados.js"></script>
+      <script src="calculo.js"></script>
+      <link rel="stylesheet" href="geral.css">
+</head>
+<body>
+      <h1>Calendário Lunissolar</h1>
+      <div class="calculadora">
+            <table>
+                  <tr>
+                        <td>
+                              Ano:
+                        </td>
+                        <td>
+                              Mês:
+                        </td>
+                        <td>
+                              Dia:
+                        </td>
+                  </tr>
+                  <tr>
+                        <td>
+                              <input type="number" name="datalunar" id="anolunar" min="1" max="17532">
+                        </td>
+                        <td>
+                              <select name="datalunar" id="meslunar">
+                                    <option value="1">Abib</option>
+                                    <option value="2">Ziv</option>
+                                    <option value="3">Sivan</option>
+                                    <option value="4">Tammuz</option>
+                                    <option value="5">Av</option>
+                                    <option value="6">Elul</option>
+                                    <option value="7">Etanim</option>
+                                    <option value="8">Bul</option>
+                                    <option value="9">Kislev</option>
+                                    <option value="10">Tevet</option>
+                                    <option value="11">Shevat</option>
+                                    <option value="12">Adar</option>
+                                    <option value="12">Adar-A</option>
+                                    <option value="13">Adar-B</option>
+                              </select>
+                        </td>
+                        <td>
+                              <input type="number" name="datalunar" id="dialunar" min="1" max="30">
+                        </td>
+                  </tr>
+            </table>
+            <button id="butacaocalculagregoriana" type="button" onclick="teste()">Get Greagorian</button>
+            <p id="datajudaica">Lunar date.</p>   
+            <p id="datagregoriana">Gregorian date.</p>  
+
+      </div> 
+      <p>Cálculo entre um calendário lunissolar inspirado no calendário hebraico-babilônico (usado pela comunidade judaica e Israel) e o calendário gregoriano.</p>
+</body>
+</html>
