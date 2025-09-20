@@ -63,11 +63,11 @@ function julianoparagregoriano(sjd) {
 
       //var dayStr = d < 10 ? '0' + d : d;
       //var monthStr = m < 10 ? '0' + m : m;
-      var yearStr = y > 0 ? y : (1 - y) + ' BCE';
+      var yearStr = y > 0 ? y.toString().padStart(4, '0') : (1 - y).toString().padStart(4, '0') + ' BCE';
 
       document.getElementById("datagregoriana").innerText = `${semanagregoriana[diadasemana]}, ${d} ${emmesesgregorianos[m]} ${yearStr.toString().padStart(4, '0')} → JD: ${parseInt(sjd)} ½ ± ½`;
 
-      return `${semanagregoriana[diadasemana]} ${yearStr.toString().padStart(4, '0')} ${emmesesgregorianos[m]} ${d}`;
+      return `${semanagregoriana[diadasemana]} ${yearStr} ${emmesesgregorianos[m]} ${d}`;
 }
 function teste(){
       ano = Number(document.getElementById('anolunar').value)
