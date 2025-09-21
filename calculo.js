@@ -33,18 +33,14 @@ function lunarparajuliano(ano,mes,dia){
       if(dia30==0 && dia == 30){
             dia = 29
       }
-      if(dia < 1 || dia > 30){
-            document.getElementById("datalunar").innerText = "This day is not allowed."
-            return "This day is not allowed."
-      }
-      if(mes > 13){
-            document.getElementById("datalunar").innerText = "This month number is not allowed."
-            return "This month number is not allowed."
-      }
       swd = parseInt(quantciclos*ciclocompleto)+acuanoslunares[anociclo]+acumeseslunares[mes]+dia+residuo
       sjd = swd+sjdinicial
       semanal = swd%7
-      document.getElementById("datalunar").innerText = `${semanalunar[semanal]}, ${dia} ${meseslunares[leap][mes]} ${ano.toString().padStart(4, '0')} → JD: ${parseInt(sjd).toLocaleString('fr-FR')} ¾ ± ½`
+      if(ano < 1){
+            document.getElementById("datalunar").innerText = "Date before epoch.";
+      }else{
+            document.getElementById("datalunar").innerText = `${semanalunar[semanal]}, ${dia} ${meseslunares[leap][mes]} ${ano.toString().padStart(4, '0')}`
+      }
       return parseInt(sjd)
 }
 function julianoparagregoriano(sjd) {
@@ -69,28 +65,32 @@ function julianoparagregoriano(sjd) {
       //var dayStr = d < 10 ? '0' + d : d;
       //var monthStr = m < 10 ? '0' + m : m;
       let anostring = y > 0 ? y.toString().padStart(4, '0') : (1 - y).toString().padStart(4, '0') + ' BCE';
-
-      document.getElementById("lunarparagregoriana").innerText = `${semanagregoriana[diadasemana]}, ${d} ${mesesgregorianos[m]} ${anostring.toString().padStart(4, '0')} → JD: ${parseInt(sjd).toLocaleString('fr-FR')} ½ ± ½`;
+      if(sjd <= 261266){
+            document.getElementById("datagregoriana").innerText = "The input date is nonsense.";
+      }else{
+            document.getElementById("datagregoriana").innerText = `${semanagregoriana[diadasemana]}, ${d} ${mesesgregorianos[m]} ${anostring.toString().padStart(4, '0')}`;
+            document.getElementById("datajuliana").innerText = `JD: ${parseInt(sjd).toLocaleString('fr-FR')} ½ ± ½`;
+      }
 
       return `${semanagregoriana[diadasemana]} ${anostring} ${mesesgregorianos[m]} ${d}`;
 }
 function gregorianoparajuliano(ano,mes,dia){
-      let anoussher = 4000+ano
+      let anolux = 4000+ano
       if(mes<=2){
-            anoussher-= 1
+            anolux-= 1
       }
-      let sud = anoussher*365+acumesesgregorianos[mes]+dia
-      let residuo = parseInt(anoussher/4)-parseInt(anoussher/100)+parseInt(anoussher/400)
-      sjd = sud+260149+residuo
+      let sud = anolux*365+acumesesgregorianos[mes]+dia
+      let residuo = parseInt(anolux/4)-parseInt(anolux/100)+parseInt(anolux/400)
+      let sjd = sud+260149+residuo
       let diadasemana = sjd%7
 
       let anostring = ano > 0 ? ano.toString().padStart(4, '0') : (1 - ano).toString().padStart(4, '0') + ' BCE';
    
-      document.getElementById("datagregoriana").innerText = `${semanagregoriana[diadasemana]}, ${dia} ${mesesgregorianos[mes]} ${anostring.toString().padStart(4, '0')} → JD: ${parseInt(sjd).toLocaleString('fr-FR')} ½ ± ½`;
+      document.getElementById("datagregoriana").innerText = `${semanagregoriana[diadasemana]}, ${dia} ${mesesgregorianos[mes]} ${anostring.toString().padStart(4, '0')}`;
       return sjd
 }
 function julianoparalunar(sjd) {
-    let swd = sjd - 261267;
+    let swd = sjd - 261266;
     if (swd < 0) {
         document.getElementById("gregorianaparalunar").innerText = "Date before epoch.";
         return "Date before epoch.";
@@ -117,7 +117,7 @@ function julianoparalunar(sjd) {
         swdinicialanual = obterswdinicial(ano);
         console.log("repeti")
     }
-    let day_of_year = swd - swdinicialanual + 1;
+    let day_of_year = swd - swdinicialanual;  // Voltar aqui se não funcionar
     let anociclo = ano % 1727;
     if (anociclo === 0) anociclo = 1727;
     let duracao = acuanoslunares[anociclo + 1] - acuanoslunares[anociclo];
@@ -135,13 +135,14 @@ function julianoparalunar(sjd) {
         mes++;
     }
     if (mes > 12 + leap) {
-        document.getElementById("grogorianadatalunar").innerText = "Invalid day of year.";
+        document.getElementById("datalunar").innerText = "Invalid day of year.";
         return "Invalid day of year.";
     }
     let dia = day_of_year - current_day;
-    let semanal = (swd+1) % 7;
+    let semanal = swd % 7;
 
-    document.getElementById("gregorianaparalunar").innerText = `${semanalunar[semanal]}, ${dia} ${meseslunares[leap][mes]} ${ano.toString().padStart(4, '0')} → JD: ${parseInt(sjd).toLocaleString('fr-FR')} ¾ ± ½`;
+    document.getElementById("datalunar").innerText = `${semanalunar[semanal]}, ${dia} ${meseslunares[leap][mes]} ${ano.toString().padStart(4, '0')}`;
+    document.getElementById("datajuliana").innerText = `JD: ${parseInt(sjd).toLocaleString('fr-FR')} ¾ ± ½`;
     return `${semanalunar[semanal]}, ${dia} ${meseslunares[leap][mes]} ${ano.toString().padStart(4, '0')}`;
 }
 function obtergregoriano(){

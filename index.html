@@ -22,6 +22,9 @@
                         </tr>
                         <tr>
                               <td>
+                                    Calendar type:
+                              </td>
+                              <td>
                                     Day:
                               </td>
                               <td>
@@ -32,6 +35,9 @@
                               </td>
                         </tr>
                         <tr>
+                              <td>
+                                    Lunar Hebrew-like date:
+                              </td>
                               <td>
                                     <input type="number" name="datalunar" id="dialunar" min="1" max="30" value="10" onchange="obtergregoriano()">
                               </td>
@@ -56,31 +62,11 @@
                               <td>
                                     <input type="number" name="datalunar" id="anolunar" min="1" max="10000" value="6023" onchange="obtergregoriano()">
                               </td>
+                        </tr>
+                              <tr>
                               <td>
-                                    <button id="butacaocalculagregoriana" type="button" onclick="obtergregoriano()">Get Greagorian</button>
+                                    Gregorian date:
                               </td>
-                        </tr>
-                  </table>
-                  <p class="exibirdatas" id="datalunar">Lunar date will appear here after submit.</p>   
-                  <p class="exibirdatas" id="lunarparagregoriana">Gregorian date will appear here after submit.</p>  
-            </div>
-            <div class="calculadora">
-                        <table>
-                        <tr>
-                              <th colspan="4">Convert Gregorian Calendar dates to Lunar Calendar dates</th>
-                        </tr>
-                              <tr>
-                                    <td>
-                                          Day:
-                                    </td>
-                                    <td>
-                                          Month:
-                                    </td>
-                                    <td>
-                                          Year
-                                    </td>
-                              </tr>
-                              <tr>
                                     <td>
                                           <input type="number" name="datagregoriana" id="diagregoriano" min="1" max="31" value="2" onchange="obterlunar()">
                                     </td>
@@ -103,14 +89,30 @@
                                     <td>
                                           <input type="number" name="datagregoriana" id="anogregoriano" min="-3997" max="6003" value="2025" onchange="obterlunar()">
                                     </td>
+                              </tr>
+                              <tr>
+                                    <td colspan="3" class="exibirdatas" id="datalunar">
+                                          Lunar date will appear here after submit.
+                                    </td>
                                     <td>
                                           <button id="butacaocalculagregoriana" type="button" onclick="obterlunar()">Get Lunar</button>
                                     </td>
                               </tr>
-                        </table>
-                        <p class="exibirdatas" id="datagregoriana">Gregorian date will appear here after submit.</p>
-                        <p class="exibirdatas" id="gregorianaparalunar">Lunar date will appear here after submit.</p>
-                  </div>
+                              <tr>
+                                    <td colspan="3" class="exibirdatas" id="datagregoriana">
+                                          Gregorian date will appear here after submit.
+                                    </td>
+                                    <td>
+                                          <button id="butacaocalculagregoriana" type="button" onclick="obtergregoriano()">Get Greagorian</button>
+                                    </td>
+                              </tr>
+                              <tr>
+                                    <td colspan="4" class="exibirdatas" id="datajuliana">
+                                          Julian date
+                                    </td>
+                              </tr>
+                  </table>
+            </div>
       </div>
 
       <h2>What is a lunisolar calendar?</h2>

@@ -10,7 +10,7 @@ h1{
 div.calculadora{
   display: inline-block;
   padding: 30px;
-  max-width: 700px;
+  border: 1px solid black;
 }
 div.calculadora:nth-child(1){
   background-color: #bed4ff;
@@ -21,14 +21,17 @@ div.calculadora:nth-child(2){
 select,
 input[type="text"],
 input[type="number"] {
-  padding: 8px;
+  padding: 0px 8px;
   font-size: 20pt;
 }
 input[type="number"]{
   text-align: right;
 }
-input#anolunar,input#anoregoriano{
-      width: 90px;
+select{
+  width: 200px;
+}
+input#anolunar,input#anogregoriano{
+      width: 120px;
 }
 input#dialunar,input#diagregoriano{
       width: 60px;
@@ -39,6 +42,8 @@ button {
   border: none;
   cursor: pointer;
   box-shadow: #4caf50;
+  width: 100%;
+  height: 100%;
 }
 button:hover {
   background-color: #056009;
@@ -57,7 +62,7 @@ p.subtitle{
   text-indent: 0ch;
   text-align: center;
 }
-p.exibirdatas{
+td.exibirdatas{
   text-align: right;
 }
 b.roxo{
