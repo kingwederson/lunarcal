@@ -14,28 +14,28 @@
             <table>
                   <tr>
                         <td>
-                              Ano:
+                              Year:
                         </td>
                         <td>
-                              Mês:
+                              Month:
                         </td>
                         <td>
-                              Dia:
+                              Day:
                         </td>
                   </tr>
                   <tr>
                         <td>
-                              <input type="number" name="datalunar" id="anolunar" min="1" max="17532" value="6023">
+                              <input type="number" name="datalunar" id="anolunar" min="-999" max="17532" value="6023" onchange="teste()">
                         </td>
                         <td>
-                              <select name="datalunar" id="meslunar">
+                              <select name="datalunar" id="meslunar" onchange="teste()">
                                     <option value="1">Abib (1)</option>
                                     <option value="2">Ziv (2)</option>
                                     <option value="3">Sivan (3)</option>
                                     <option value="4">Tammuz (4)</option>
                                     <option value="5">Av (5)</option>
                                     <option value="6">Elul (6)</option>
-                                    <option value="7" selected>Etanim (7)</option>
+                                    <option value="7" selected>Ethanim (7)</option>
                                     <option value="8">Bul (8)</option>
                                     <option value="9">Kislev (9)</option>
                                     <option value="10">Tevet (10)</option>
@@ -46,7 +46,7 @@
                               </select>
                         </td>
                         <td>
-                              <input type="number" name="datalunar" id="dialunar" min="1" max="30" value="10">
+                              <input type="number" name="datalunar" id="dialunar" min="1" max="30" value="10" onchange="teste()">
                         </td>
                   </tr>
             </table>
