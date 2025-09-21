@@ -9,52 +9,97 @@
       <link rel="stylesheet" href="geral.css">
 </head>
 <body>
-      <h1>Calendário Lunissolar</h1>
-      <div class="calculadora">
-            <table>
-                  <tr>
-                        <td>
-                              Year:
-                        </td>
-                        <td>
-                              Month:
-                        </td>
-                        <td>
-                              Day:
-                        </td>
-                  </tr>
-                  <tr>
-                        <td>
-                              <input type="number" name="datalunar" id="anolunar" min="-999" max="17532" value="6023" onchange="teste()">
-                        </td>
-                        <td>
-                              <select name="datalunar" id="meslunar" onchange="teste()">
-                                    <option value="1">Abib (1)</option>
-                                    <option value="2">Ziv (2)</option>
-                                    <option value="3">Sivan (3)</option>
-                                    <option value="4">Tammuz (4)</option>
-                                    <option value="5">Av (5)</option>
-                                    <option value="6">Elul (6)</option>
-                                    <option value="7" selected>Ethanim (7)</option>
-                                    <option value="8">Bul (8)</option>
-                                    <option value="9">Kislev (9)</option>
-                                    <option value="10">Tevet (10)</option>
-                                    <option value="11">Shevat (11)</option>
-                                    <option value="12">Adar-A (12a)</option>
-                                    <option value="13">Adar-B (12b)</option>
-                                    <option value="13">Adar (12)</option>
-                              </select>
-                        </td>
-                        <td>
-                              <input type="number" name="datalunar" id="dialunar" min="1" max="30" value="10" onchange="teste()">
-                        </td>
-                  </tr>
-            </table>
-            <button id="butacaocalculagregoriana" type="button" onclick="teste()">Get Greagorian</button>
-            <p id="datajudaica">Lunar date.</p>   
-            <p id="datagregoriana">Gregorian date.</p>  
-
-      </div> 
+      <h1>Lunarcal</h1>
+      <p>Welcome to Lunarcal, a lunisolar calendar converter.</p>
+      <div class="calculadoras">
+            <div class="calculadora">
+                  <table>
+                        <tr>
+                              <td>
+                                    Day:
+                              </td>
+                              <td>
+                                    Month:
+                              </td>
+                              <td>
+                                    Year:
+                              </td>
+                        </tr>
+                        <tr>
+                              <td>
+                                    <input type="number" name="datalunar" id="dialunar" min="1" max="30" value="10" onchange="obtergregoriano()">
+                              </td>
+                              <td>
+                                    <select name="datalunar" id="meslunar" onchange="obtergregoriano()">
+                                          <option value="1">(1) Abib</option>
+                                          <option value="2">(2) Ziv</option>
+                                          <option value="3">(3) Sivan</option>
+                                          <option value="4">(4) Tammuz</option>
+                                          <option value="5">(5) Av</option>
+                                          <option value="6">(6) Elul</option>
+                                          <option value="7" selected>(7) Ethanim</option>
+                                          <option value="8">(8) Bul</option>
+                                          <option value="9">(9) Kislev</option>
+                                          <option value="10">(10) Tevet</option>
+                                          <option value="11">(11) Shevat</option>
+                                          <option value="12">(12a) Adar-A</option>
+                                          <option value="13">(12b) Adar-B</option>
+                                          <option value="13">(12) Adar</option>
+                                    </select>
+                              </td>
+                              <td>
+                                    <input type="number" name="datalunar" id="anolunar" min="1" max="10000" value="6023" onchange="obtergregoriano()">
+                              </td>
+                        </tr>
+                  </table>
+                  <button id="butacaocalculagregoriana" type="button" onclick="obtergregoriano()">Get Greagorian</button>
+                  <p id="datalunar">Lunar date.</p>   
+                  <p id="lunarparagregoriana">Gregorian date.</p>  
+            </div>
+            <div class="calculadora">
+                        <table>
+                              <tr>
+                                    <td>
+                                          Day:
+                                    </td>
+                                    <td>
+                                          Month:
+                                    </td>
+                                    <td>
+                                          Year
+                                    </td>
+                              </tr>
+                              <tr>
+                                    <td>
+                                          <input type="number" name="datagregoriana" id="diagregoriano" min="1" max="31" value="2" onchange="obterlunar()">
+                                    </td>
+                                    <td>
+                                          <select name="datagregoriana" id="mesgregoriano" onchange="obterlunar()">
+                                                <option value="1">(1) January</option>
+                                                <option value="2">(2) February</option>
+                                                <option value="3">(3) March</option>
+                                                <option value="4">(4) April</option>
+                                                <option value="5">(5) May</option>
+                                                <option value="6">(6) June</option>
+                                                <option value="7">(7) July</option>
+                                                <option value="8">(8) August</option>
+                                                <option value="9">(9) September</option>
+                                                <option value="10" selected>(10) October</option>
+                                                <option value="11">(11) November</option>
+                                                <option value="12">(12) December</option>
+                                          </select>
+                                    </td>
+                                    <td>
+                                          <input type="number" name="datagregoriana" id="anogregoriano" min="-3997" max="6003" value="2025" onchange="obterlunar()">
+                                    </td>
+                              </tr>
+                        </table>
+                        <button id="butacaocalculagregoriana" type="button" onclick="obterlunar()">Get Lunar</button>
+                        <p id="datagregoriana">Gregorian date.</p>
+                        <p id="gregorianaparalunar">Lunar date.</p>
+                  </div>
+      </div>
+      
       <p>Cálculo entre um calendário lunissolar inspirado no calendário hebraico-babilônico (usado pela comunidade judaica e Israel) e o calendário gregoriano.</p>
 </body>
 </html>

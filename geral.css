@@ -1,7 +1,13 @@
 div.calculadora{
-      background-color: #bed4ff;
-      padding: 30px;
-      max-width: 500px;
+  display: inline-block;
+  padding: 30px;
+  max-width: 700px;
+}
+div.calculadora:nth-child(1){
+  background-color: #bed4ff;
+}
+div.calculadora:nth-child(2){
+  background-color: #beffd4;
 }
 select,
 input[type="text"],
@@ -9,10 +15,10 @@ input[type="number"] {
   padding: 8px;
   font-size: 20pt;
 }
-input#anolunar{
+input#anolunar,input#anoregoriano{
       width: 90px;
 }
-input#dialunar{
+input#dialunar,input#diagregoriano{
       width: 60px;
 }
 button {
@@ -29,4 +35,7 @@ button:hover {
 }
 button#butacaocalculagregoriana{
   background-color: #4caf50;
+}
+p{
+  text-align: justify;
 }
