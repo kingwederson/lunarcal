@@ -2,6 +2,8 @@ body{
   font-family: 'DIN Regular';
   font-size: 14pt;
   padding:3vh 3vh 3vh 3vh;
+  max-width: 700px;
+  margin: auto;
 }
 h1{
   font-family: 'Feather Bold';
@@ -63,7 +65,7 @@ p.subtitle{
   text-align: center;
 }
 td.exibirdatas{
-  text-align: right;
+  text-align: center;
 }
 b.roxo{
   color: purple;

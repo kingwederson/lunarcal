@@ -69,7 +69,7 @@ function julianoparagregoriano(sjd) {
             document.getElementById("datagregoriana").innerText = "The input date is nonsense.";
       }else{
             document.getElementById("datagregoriana").innerText = `${semanagregoriana[diadasemana]}, ${d} ${mesesgregorianos[m]} ${anostring.toString().padStart(4, '0')}`;
-            document.getElementById("datajuliana").innerText = `JD: ${parseInt(sjd).toLocaleString('fr-FR')} ½ ± ½`;
+            document.getElementById("datajuliana").innerText = `Julian date: ${parseInt(sjd).toLocaleString('fr-FR')} ½ ± ½`;
       }
 
       return `${semanagregoriana[diadasemana]} ${anostring} ${mesesgregorianos[m]} ${d}`;
@@ -142,7 +142,7 @@ function julianoparalunar(sjd) {
     let semanal = swd % 7;
 
     document.getElementById("datalunar").innerText = `${semanalunar[semanal]}, ${dia} ${meseslunares[leap][mes]} ${ano.toString().padStart(4, '0')}`;
-    document.getElementById("datajuliana").innerText = `JD: ${parseInt(sjd).toLocaleString('fr-FR')} ¾ ± ½`;
+    document.getElementById("datajuliana").innerText = `Julian date: ${parseInt(sjd).toLocaleString('fr-FR')} ¾ ± ½`;
     return `${semanalunar[semanal]}, ${dia} ${meseslunares[leap][mes]} ${ano.toString().padStart(4, '0')}`;
 }
 function obtergregoriano(){
