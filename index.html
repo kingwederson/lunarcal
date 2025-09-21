@@ -7,13 +7,19 @@
       <script src="acumulados.js"></script>
       <script src="calculo.js"></script>
       <link rel="stylesheet" href="geral.css">
+      <link rel="stylesheet" href="tipografia.css">
 </head>
 <body>
       <h1>Lunarcal</h1>
-      <p>Welcome to Lunarcal, a lunisolar calendar converter.</p>
+      <p class="subtitle" style="margin-top:-40px;"><small>lunarcal.wederson.com</small></p>
+      <p>Welcome to Lunarcal, a lunisolar calendar converter observing ancient Hebrew way of time counting.</p>
+      <p>Please do not mistake this lunisolar calendar with Hebrew Calendar (a.k.a Jewish Calendar). Read explanations below to understand the diference. Futhermore if you want convert some dates go on using calculators below.</p>
       <div class="calculadoras">
             <div class="calculadora">
                   <table>
+                        <tr>
+                              <th colspan="4">Convert Lunar Calendar dates to Gregorian Calendar dates</th>
+                        </tr>
                         <tr>
                               <td>
                                     Day:
@@ -50,14 +56,19 @@
                               <td>
                                     <input type="number" name="datalunar" id="anolunar" min="1" max="10000" value="6023" onchange="obtergregoriano()">
                               </td>
+                              <td>
+                                    <button id="butacaocalculagregoriana" type="button" onclick="obtergregoriano()">Get Greagorian</button>
+                              </td>
                         </tr>
                   </table>
-                  <button id="butacaocalculagregoriana" type="button" onclick="obtergregoriano()">Get Greagorian</button>
-                  <p id="datalunar">Lunar date.</p>   
-                  <p id="lunarparagregoriana">Gregorian date.</p>  
+                  <p class="exibirdatas" id="datalunar">Lunar date will appear here after submit.</p>   
+                  <p class="exibirdatas" id="lunarparagregoriana">Gregorian date will appear here after submit.</p>  
             </div>
             <div class="calculadora">
                         <table>
+                        <tr>
+                              <th colspan="4">Convert Gregorian Calendar dates to Lunar Calendar dates</th>
+                        </tr>
                               <tr>
                                     <td>
                                           Day:
@@ -92,14 +103,19 @@
                                     <td>
                                           <input type="number" name="datagregoriana" id="anogregoriano" min="-3997" max="6003" value="2025" onchange="obterlunar()">
                                     </td>
+                                    <td>
+                                          <button id="butacaocalculagregoriana" type="button" onclick="obterlunar()">Get Lunar</button>
+                                    </td>
                               </tr>
                         </table>
-                        <button id="butacaocalculagregoriana" type="button" onclick="obterlunar()">Get Lunar</button>
-                        <p id="datagregoriana">Gregorian date.</p>
-                        <p id="gregorianaparalunar">Lunar date.</p>
+                        <p class="exibirdatas" id="datagregoriana">Gregorian date will appear here after submit.</p>
+                        <p class="exibirdatas" id="gregorianaparalunar">Lunar date will appear here after submit.</p>
                   </div>
       </div>
+
+      <h2>What is a lunisolar calendar?</h2>
       
-      <p>Cálculo entre um calendário lunissolar inspirado no calendário hebraico-babilônico (usado pela comunidade judaica e Israel) e o calendário gregoriano.</p>
+      <p>Lunisolar calendars are calendars that align the cycles of Sun (years) and Moon (months) hitting a syncrony. In contrast with <b class="roxo">Gregorian</b> Calendar, <b class="roxo">Indian</b> Calendar or <b class="roxo">Julian</b> Calendar, that are somewhat supposed to be ajusted with tropical year which month are a fraction of it, a lunissolar calendars includes the cycles of Moon period to mensure the months.</p>
+      <p></p>
 </body>
 </html>

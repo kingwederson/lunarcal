@@ -1,3 +1,12 @@
+body{
+  font-family: 'DIN Regular';
+  font-size: 14pt;
+  padding:3vh 3vh 3vh 3vh;
+}
+h1{
+  font-family: 'Feather Bold';
+  text-align: center;
+}
 div.calculadora{
   display: inline-block;
   padding: 30px;
@@ -14,6 +23,9 @@ input[type="text"],
 input[type="number"] {
   padding: 8px;
   font-size: 20pt;
+}
+input[type="number"]{
+  text-align: right;
 }
 input#anolunar,input#anoregoriano{
       width: 90px;
@@ -38,4 +50,16 @@ button#butacaocalculagregoriana{
 }
 p{
   text-align: justify;
+  text-indent: 7ch;
+}
+p.subtitle{
+  margin-top:-40px;
+  text-indent: 0ch;
+  text-align: center;
+}
+p.exibirdatas{
+  text-align: right;
+}
+b.roxo{
+  color: purple;
 }

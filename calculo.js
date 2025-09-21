@@ -44,7 +44,7 @@ function lunarparajuliano(ano,mes,dia){
       swd = parseInt(quantciclos*ciclocompleto)+acuanoslunares[anociclo]+acumeseslunares[mes]+dia+residuo
       sjd = swd+sjdinicial
       semanal = swd%7
-      document.getElementById("datalunar").innerText = `${semanalunar[semanal]}, ${dia} ${meseslunares[leap][mes]} ${ano.toString().padStart(4, '0')} → JD: ${parseInt(sjd)} ¾ ± ½`
+      document.getElementById("datalunar").innerText = `${semanalunar[semanal]}, ${dia} ${meseslunares[leap][mes]} ${ano.toString().padStart(4, '0')} → JD: ${parseInt(sjd).toLocaleString('fr-FR')} ¾ ± ½`
       return parseInt(sjd)
 }
 function julianoparagregoriano(sjd) {
@@ -70,7 +70,7 @@ function julianoparagregoriano(sjd) {
       //var monthStr = m < 10 ? '0' + m : m;
       let anostring = y > 0 ? y.toString().padStart(4, '0') : (1 - y).toString().padStart(4, '0') + ' BCE';
 
-      document.getElementById("lunarparagregoriana").innerText = `${semanagregoriana[diadasemana]}, ${d} ${mesesgregorianos[m]} ${anostring.toString().padStart(4, '0')} → JD: ${parseInt(sjd)} ½ ± ½`;
+      document.getElementById("lunarparagregoriana").innerText = `${semanagregoriana[diadasemana]}, ${d} ${mesesgregorianos[m]} ${anostring.toString().padStart(4, '0')} → JD: ${parseInt(sjd).toLocaleString('fr-FR')} ½ ± ½`;
 
       return `${semanagregoriana[diadasemana]} ${anostring} ${mesesgregorianos[m]} ${d}`;
 }
@@ -86,7 +86,7 @@ function gregorianoparajuliano(ano,mes,dia){
 
       let anostring = ano > 0 ? ano.toString().padStart(4, '0') : (1 - ano).toString().padStart(4, '0') + ' BCE';
    
-      document.getElementById("datagregoriana").innerText = `${semanagregoriana[diadasemana]}, ${dia} ${mesesgregorianos[mes]} ${anostring.toString().padStart(4, '0')} → JD: ${parseInt(sjd)} ½ ± ½`;
+      document.getElementById("datagregoriana").innerText = `${semanagregoriana[diadasemana]}, ${dia} ${mesesgregorianos[mes]} ${anostring.toString().padStart(4, '0')} → JD: ${parseInt(sjd).toLocaleString('fr-FR')} ½ ± ½`;
       return sjd
 }
 function julianoparalunar(sjd) {
@@ -141,7 +141,7 @@ function julianoparalunar(sjd) {
     let dia = day_of_year - current_day;
     let semanal = (swd+1) % 7;
 
-    document.getElementById("gregorianaparalunar").innerText = `${semanalunar[semanal]}, ${dia} ${meseslunares[leap][mes]} ${ano.toString().padStart(4, '0')} → JD: ${parseInt(sjd)} ¾ ± ½`;
+    document.getElementById("gregorianaparalunar").innerText = `${semanalunar[semanal]}, ${dia} ${meseslunares[leap][mes]} ${ano.toString().padStart(4, '0')} → JD: ${parseInt(sjd).toLocaleString('fr-FR')} ¾ ± ½`;
     return `${semanalunar[semanal]}, ${dia} ${meseslunares[leap][mes]} ${ano.toString().padStart(4, '0')}`;
 }
 function obtergregoriano(){
