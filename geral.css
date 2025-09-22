@@ -70,3 +70,8 @@ td.exibirdatas{
 b.roxo{
   color: purple;
 }
+span.info{
+  color:purple;
+  border-bottom: 1px dotted purple;
+  cursor: pointer;
+}

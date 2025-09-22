@@ -2,7 +2,7 @@ const meseslunares = [
       ["index 0", "Abib", "Ziv", "Sivan", "Tammuz", "Av", "Elul", "Ethanim", "Bul", "Kislev", "Tevet", "Shevat", "Adar"],
       ["index 0", "Abib", "Ziv", "Sivan", "Tammuz", "Av", "Elul", "Ethanim", "Bul", "Kislev", "Tevet", "Shevat", "Adar-A", "Adar-B"]
 ]
-const semanalunar = ["Sabbath","Sunday","Monday","Tuesday","Wednesday","Thursday","Friday"]
+const semanalunar = ["Tuesday","Wednesday","Thursday","Friday","Sabbath","Sunday","Monday"]
 
 // Conversão para gregoriano
 
