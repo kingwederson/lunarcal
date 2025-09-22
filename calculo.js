@@ -64,12 +64,12 @@ function julianoparagregoriano(sjd) {
 
       //var dayStr = d < 10 ? '0' + d : d;
       //var monthStr = m < 10 ? '0' + m : m;
-      let anostring = y > 0 ? y.toString().padStart(4, '0') : (1 - y).toString().padStart(4, '0') + ' BCE';
+      let anostring = y > 0 ? y.toString().padStart(4, '0') + ' AD' : (1 - y).toString().padStart(4, '0') + ' BCE';
       if(sjd <= 261266){
             document.getElementById("datagregoriana").innerText = "The input date is nonsense.";
       }else{
             document.getElementById("datagregoriana").innerText = `${semanagregoriana[diadasemana]}, ${d} ${mesesgregorianos[m]} ${anostring.toString().padStart(4, '0')}`;
-            document.getElementById("datajuliana").innerText = `Julian date: ${parseInt(sjd).toLocaleString('fr-FR')} ½ ± ½`;
+            document.getElementById("datajuliana").innerText = `Julian date: ${(sjd+0.5).toLocaleString('fr-FR')}`;
       }
 
       return `${semanagregoriana[diadasemana]} ${anostring} ${mesesgregorianos[m]} ${d}`;
@@ -107,12 +107,12 @@ function julianoparalunar(sjd) {
         return Math.floor(qc * ciclocompleto) + acuanoslunares[ac] + res;
     }
     let swdinicialanual = obterswdinicial(ano);
-    while (swd < swdinicialanual && ano > 0) {
+    while (swd <= swdinicialanual && ano > 0) {
         ano--;
         swdinicialanual = obterswdinicial(ano);
         console.log("repeti")
     }
-    while (swd >= obterswdinicial(ano + 1)) {
+    while (swd > obterswdinicial(ano + 1)) {
         ano++;
         swdinicialanual = obterswdinicial(ano);
         console.log("repeti")
@@ -141,9 +141,9 @@ function julianoparalunar(sjd) {
     let dia = day_of_year - current_day;
     let semanal = swd % 7;
 
-    document.getElementById("datalunar").innerText = `${semanalunar[semanal]}, ${dia} ${meseslunares[leap][mes]} ${ano.toString().padStart(4, '0')}`;
-    document.getElementById("datajuliana").innerText = `Julian date: ${parseInt(sjd).toLocaleString('fr-FR')} ¾ ± ½`;
-    return `${semanalunar[semanal]}, ${dia} ${meseslunares[leap][mes]} ${ano.toString().padStart(4, '0')}`;
+    document.getElementById("datalunar").innerText = `${semanalunar[semanal]}, ${dia} ${meseslunares[leap][mes]} ${ano.toString().padStart(4, '0')} WE`;
+    document.getElementById("datajuliana").innerText = `Julian date: ${(sjd+0.25).toLocaleString('fr-FR')}`;
+    return `${semanalunar[semanal]}, ${dia} ${meseslunares[leap][mes]} ${ano.toString().padStart(4, '0')} WE`;
 }
 function obtergregoriano(){
       ano = Number(document.getElementById('anolunar').value)
