@@ -82,6 +82,34 @@ function gregorianoparajuliano(ano,mes,dia){
       if(mes<=2){
             anolux-= 1
       }
+      let leap = 0
+      let dia31 = 1
+      let dia30 = 1
+      let dia29 = 1
+      if(resto(ano,4)==0){
+            leap++
+      }if(resto(ano,100)==0){
+            leap--
+      }if(resto(ano,400)==0){
+            leap++
+      }
+      // Avalia a legalidade do dia 31, 30 e 29
+      if(mes==2 ||mes==4 ||mes==6 ||mes==9 || mes==11){
+            dia31 = 0
+      }if(mes==2){
+            dia30 = 0
+      }if(mes==2 && leap==0){
+            dia29 = 0
+      }
+      if(dia31==0 && dia == 31){
+            dia = 30
+      }
+      if(dia30==0 && dia == 30){
+            dia = 29
+      }
+      if(dia29==0 && dia == 29){
+            dia = 28
+      }
       let sud = anolux*365+acumesesgregorianos[mes]+dia
       let residuo = parseInt(anolux/4)-parseInt(anolux/100)+parseInt(anolux/400)
       let sjd = sud-1200821+residuo
