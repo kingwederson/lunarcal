@@ -1,21 +1,29 @@
 
+function resto(dividendo,divisor){
+      return (dividendo%divisor+divisor)%divisor
+}
+function ciclo(dividendo,divisor){
+      dividendo--;
+      return 1+(dividendo%divisor+divisor)%divisor
+}
+
+var cicloanos = 1727
+var ciclodias = 630773.377902212669142
+var sjdinicial = 127 // para 3998 BCE | -46265 para 4839 BCE.
+
 function lunarparajuliano(ano,mes,dia){
-      let ciclocompleto = 630773.377902213
-      let sjdinicial = 127 // para 3998 BCE | -46265 para 4839 BCE.
-      //let anociclo = ano%1727; if(anociclo == 1727){anociclo = 1727}};
-      let anociclo = ((ano - 1) % 1727) + 1;
+      let ciclocompleto = ciclodias
+      let anociclo = ciclo(ano,cicloanos);
       let duracao = acuanoslunares[anociclo+1]-acuanoslunares[anociclo]
       let leap
-      //let quantciclos = parseInt(ano/1727)
-      let quantciclos = Math.floor((ano - 1) / 1727);
-      //let residuo = parseInt(quantciclos*0.377902212669142)
-      let residuo = Math.floor(quantciclos * 0.377902212669142);
+      let quantciclos = Math.floor((ano - 1) / cicloanos);
+      let residuo = Math.floor(quantciclos * resto(ciclodias,1));
       let swd // dia sequencial do calendário lunissolar. Dia 1 é em 23 de março de 3998 B.C. (-3997).
       let semanal
       let sjd // dia sequencial da data juliana. Dia 0 é 24 de novembro d 4714 B.C. (-4713).
       let dia30
       let trocar13por12 = 0
-      if(anociclo == 0){anociclo = 1727}
+      if(anociclo == 0){anociclo = cicloanos}
       if(duracao<365){
             leap = 0
       }else{
@@ -26,7 +34,7 @@ function lunarparajuliano(ano,mes,dia){
             trocar13por12 = 1
       }
       // Avalia a legalidade do dia 30
-      if(mes%2==1){
+      if(resto(mes,2)==1){
             dia30 = 1
       }else if(mes==12 && duracao==355){
             dia30 = 1
@@ -38,7 +46,7 @@ function lunarparajuliano(ano,mes,dia){
       }
       swd = parseInt(quantciclos*ciclocompleto)+acuanoslunares[anociclo]+acumeseslunares[mes]+dia+residuo
       sjd = swd+sjdinicial
-      semanal = swd%7
+      semanal = resto(swd,7)
       if(ano < 1){
             document.getElementById("datalunar").innerText = "Date before epoch.";
       }else{
@@ -58,7 +66,7 @@ function julianoparagregoriano(sjd) {
       l = Math.floor(j / 11);
       let m = j + 2 - 12 * l;
       let y = 100 * (n - 49) + i + l;
-      let diadasemana = (sjd%7+7)%7
+      let diadasemana = resto(sjd,7)
 
       //var dayStr = d < 10 ? '0' + d : d;
       //var monthStr = m < 10 ? '0' + m : m;
@@ -77,7 +85,7 @@ function gregorianoparajuliano(ano,mes,dia){
       let sud = anolux*365+acumesesgregorianos[mes]+dia
       let residuo = parseInt(anolux/4)-parseInt(anolux/100)+parseInt(anolux/400)
       let sjd = sud-1200821+residuo
-      let diadasemana = ((sjd%7)+7)%7
+      let diadasemana = resto(sjd,7)
 
       let anostring = ano > 0 ? ano.toString().padStart(4, '0') + ' AD' : (1 - ano).toString().padStart(4, '0') + ' BCE';
    
@@ -86,19 +94,19 @@ function gregorianoparajuliano(ano,mes,dia){
       return sjd
 }
 function julianoparalunar(sjd) {
-    let swd = sjd - 127;
+    let swd = sjd - sjdinicial;
     if (swd < 1) {
         document.getElementById("datalunar").innerText = "Date before epoch.";
         return "Date before epoch.";
     }
-    let ciclocompleto = 630773.377902213;
-    let frac = 0.377902212669142;
+    let ciclocompleto = ciclodias;
+    let frac = resto(ciclodias,1);
     let ano = Math.floor(swd / 365.2425) + 1;
 
     function obterswdinicial(ano) {
-      let anociclo = ((ano - 1) % 1727) + 1;
-      if (anociclo == 0) {anociclo = 1727};
-      let quantciclos = Math.floor((ano - 1) / 1727);
+      let anociclo = ciclo(ano,cicloanos);
+      if (anociclo == 0) {anociclo = cicloanos};
+      let quantciclos = Math.floor((ano - 1) / cicloanos);
       let res = Math.floor(quantciclos * frac);
       return Math.floor(quantciclos * ciclocompleto) + acuanoslunares[anociclo] + res;
     }
@@ -114,16 +122,16 @@ function julianoparalunar(sjd) {
         console.log("O ano é " + ano)
     }
     let day_of_year = swd - swdinicialanual;  // Voltar aqui se não funcionar
-    let anociclo = ano % 1727;
-    if (anociclo === 0) {anociclo = 1727};
+    let anociclo = resto(ano,cicloanos);
+    if (anociclo === 0) {anociclo = cicloanos};
     let duracao = acuanoslunares[anociclo + 1] - acuanoslunares[anociclo];
     let leap = (duracao < 365) ? 0 : 1;
     let mes = 1;
     let current_day = 0;
     while (mes <= 12 + leap) {
-        let m_days = (mes % 2 === 1) ? 30 : 29;
+        let m_days = (resto(mes,2) === 1) ? 30 : 29;
         if (mes === 12 && leap === 0 && duracao === 355) m_days = 30;
-        //if (mes === 13 && leap === 1 && duracao === 383) m_days = 29;
+        //if (mes === 13 && leap === 1 && duracao === 383) m_days = 29; // anos de 383 dias foram abolidos.
         if (current_day + m_days >= day_of_year) {
             break;
         }
@@ -135,7 +143,7 @@ function julianoparalunar(sjd) {
         return "Invalid day of year.";
     }
     let dia = day_of_year - current_day;
-    let semanal = ((swd % 7)+7)%7;
+    let semanal = resto(swd,7);
 
     document.getElementById("datalunar").innerHTML = `${semanalunar[semanal]}, ${dia} ${meseslunares[leap][mes]} ${ano.toString().padStart(4, '0')} <span class="info" title="Joseph Justus Scaliger was the author of Sequencial Julian Day, with day zero at 24th November 4714 BCE. In this calendar day 1 is at 31st March 4713 BCE.">Scaliger Era</span>`;
     document.getElementById("datajuliana").innerText = `Julian date at noon: ${(sjd).toLocaleString('fr-FR')}`;

@@ -5,9 +5,13 @@ body{
   max-width: 700px;
   margin: auto;
 }
-h1{
+h1,h2{
   font-family: 'Feather Bold';
   text-align: center;
+  padding: 0px;
+}
+h2{
+  margin: 0px;
 }
 div.calculadora{
   display: inline-block;
