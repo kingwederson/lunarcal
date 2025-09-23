@@ -1,6 +1,6 @@
 const meseslunares = [
-      ["index 0", "Abib", "Ziv", "Sivan", "Tammuz", "Av", "Elul", "Ethanim", "Bul", "Kislev", "Tevet", "Shevat", "Adar"],
-      ["index 0", "Abib", "Ziv", "Sivan", "Tammuz", "Av", "Elul", "Ethanim", "Bul", "Kislev", "Tevet", "Shevat", "Adar-A", "Adar-B"]
+      ["index 0", "Nisan", "Ziv-Iyyar", "Sivan", "Tammuz", "Av", "Elul", "Tishrei", "Hereshvan", "Kislev", "Tevet", "Shevat", "Adar"],
+      ["index 0", "Nisan", "Ziv-Iyyar", "Sivan", "Tammuz", "Av", "Elul", "Tishrei", "Hereshvan", "Kislev", "Tevet", "Shevat", "Adar-A", "Adar-B"]
 ]
 const semanalunar = ["Tuesday","Wednesday","Thursday","Friday","Sabbath","Sunday","Monday"]
 
