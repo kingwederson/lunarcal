@@ -78,6 +78,9 @@ function julianoparagregoriano(sjd) {
       return `${semanagregoriana[diadasemana]} ${anostring} ${mesesgregorianos[m]} ${d}`;
 }
 function gregorianoparajuliano(ano,mes,dia){
+      if(document.getElementById("BCEcheck").checked && ano > 0){
+            ano = (-1)*ano+1
+      }
       let anolux = 8000+ano
       if(mes<=2){
             anolux-= 1
