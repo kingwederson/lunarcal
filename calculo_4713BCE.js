@@ -2,17 +2,20 @@
 function lunarparajuliano(ano,mes,dia){
       let ciclocompleto = 630773.377902213
       let sjdinicial = 127 // para 3998 BCE | -46265 para 4839 BCE.
-      let anociclo = ano%1727
+      //let anociclo = ano%1727; if(anociclo == 1727){anociclo = 1727}};
+      let anociclo = ((ano - 1) % 1727) + 1;
       let duracao = acuanoslunares[anociclo+1]-acuanoslunares[anociclo]
       let leap
-      let quantciclos = parseInt(ano/1727)
-      let residuo = parseInt(quantciclos*0.377902212669142)
+      //let quantciclos = parseInt(ano/1727)
+      let quantciclos = Math.floor((ano - 1) / 1727);
+      //let residuo = parseInt(quantciclos*0.377902212669142)
+      let residuo = Math.floor(quantciclos * 0.377902212669142);
       let swd // dia sequencial do calendário lunissolar. Dia 1 é em 23 de março de 3998 B.C. (-3997).
       let semanal
       let sjd // dia sequencial da data juliana. Dia 0 é 24 de novembro d 4714 B.C. (-4713).
       let dia30
       let trocar13por12 = 0
-      if(anociclo == 0){anociclo++}
+      if(anociclo == 0){anociclo = 1727}
       if(duracao<365){
             leap = 0
       }else{
@@ -92,27 +95,27 @@ function julianoparalunar(sjd) {
     let frac = 0.377902212669142;
     let ano = Math.floor(swd / 365.2425) + 1;
 
-    function obterswdinicial(yr) {
-        let ac = yr % 1727;
-        if (ac === 0) ac = 1727;
-        let qc = Math.floor(yr / 1727);
-        let res = Math.floor(qc * frac);
-        return Math.floor(qc * ciclocompleto) + acuanoslunares[ac] + res;
+    function obterswdinicial(ano) {
+      let anociclo = ((ano - 1) % 1727) + 1;
+      if (anociclo == 0) {anociclo = 1727};
+      let quantciclos = Math.floor((ano - 1) / 1727);
+      let res = Math.floor(quantciclos * frac);
+      return Math.floor(quantciclos * ciclocompleto) + acuanoslunares[anociclo] + res;
     }
     let swdinicialanual = obterswdinicial(ano);
     while (swd <= swdinicialanual && ano > 0) {
         ano--;
         swdinicialanual = obterswdinicial(ano);
-        console.log("repeti")
+        console.log("O ano é " + ano)
     }
     while (swd > obterswdinicial(ano + 1)) {
         ano++;
         swdinicialanual = obterswdinicial(ano);
-        console.log("repeti")
+        console.log("O ano é " + ano)
     }
     let day_of_year = swd - swdinicialanual;  // Voltar aqui se não funcionar
     let anociclo = ano % 1727;
-    if (anociclo === 0) anociclo = 1727;
+    if (anociclo === 0) {anociclo = 1727};
     let duracao = acuanoslunares[anociclo + 1] - acuanoslunares[anociclo];
     let leap = (duracao < 365) ? 0 : 1;
     let mes = 1;
@@ -120,7 +123,7 @@ function julianoparalunar(sjd) {
     while (mes <= 12 + leap) {
         let m_days = (mes % 2 === 1) ? 30 : 29;
         if (mes === 12 && leap === 0 && duracao === 355) m_days = 30;
-        if (mes === 13 && leap === 1 && duracao === 383) m_days = 29;
+        //if (mes === 13 && leap === 1 && duracao === 383) m_days = 29;
         if (current_day + m_days >= day_of_year) {
             break;
         }
@@ -128,7 +131,7 @@ function julianoparalunar(sjd) {
         mes++;
     }
     if (mes > 12 + leap) {
-        document.getElementById("datalunar").innerText = "Invalid day of year.";
+        document.getElementById("datalunar").innerText = "Year with" + mes + " months in cyclic year "+anociclo+".";
         return "Invalid day of year.";
     }
     let dia = day_of_year - current_day;
