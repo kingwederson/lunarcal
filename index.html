@@ -115,11 +115,29 @@
                               </tr>
                   </table>
             </div>
+            <div class="calculadora">
+                  <label>Dia Juliano:</label>
+                  <input type="number" id="julianDay" value="2460952.5">
+                  <button onclick="calcularFaseLunar()">Calcular Fase</button>
+                  <p id="faseLunar">Fase da Lua aparecerá aqui.</p>
+          </div>
       </div>
 
       <h2>What is a lunisolar calendar?</h2>
       
       <p>Lunisolar calendars are calendars that align the cycles of Sun (years) and Moon (months) hitting a syncrony. In contrast with <b class="roxo">Gregorian</b> Calendar, <b class="roxo">Indian</b> Calendar or <b class="roxo">Julian</b> Calendar, that are somewhat supposed to be ajusted with tropical year which month are a fraction of it, a lunissolar calendars includes the cycles of Moon period to mensure the months.</p>
-      <p></p>
+
+      <script type="module">
+            import { Julian, Moon } from 'https://unpkg.com/lunarphase-js@latest/index.js';
+
+            window.calcularFaseLunar = function() {
+                  const sjd = Number(document.getElementById('julianDay').value);
+                  const date = Julian.fromJulian(sjd);
+                  const phase = Moon.lunarPhase(date);
+                  const moonAge = Moon.lunarAge(date).toFixed(2);
+                  const percent = (Moon.lunarAgePercent(date) * 100).toFixed(2);
+                  document.getElementById('faseLunar').innerText = `Fase: ${phase}, Idade: ${moonAge} dias, Ciclo: ${percent}%`;
+            };
+    </script>
 </body>
 </html>
