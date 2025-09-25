@@ -51,7 +51,6 @@ function lunarparajuliano(ano,mes,dia){
                   dia = 29
             }
       }
-      console.log(`quantciclos: ${quantciclos}; acucicloslunares[quantciclos]: ${acucicloslunares[quantciclos]}`)
       swd = parseInt(quantciclos*ciclocompleto)+acuanoslunares[anociclo]+acumeseslunares[mes]+dia+acucicloslunares[quantciclos]
       document.getElementById("dataswd").innerText = `SDW: ${swd.toLocaleString('fr-FR')}`;
       sjd = swd+swdinicial
@@ -59,7 +58,7 @@ function lunarparajuliano(ano,mes,dia){
       if(ano < 1){
             document.getElementById("datalunar").innerText = "Date before epoch.";
       }else{
-            document.getElementById("datalunar").innerHTML = `${semanalunar[semanal]}, ${dia} ${meseslunares[leap][mes]} ${ano.toString().padStart(4, '0')} <span class="info" title="Joseph Justus Scaliger was the author of Sequencial Julian Day, with day zero at 24th November 4714 BCE. In this calendar day 1 is at 31st March 4713 BCE.">Scaliger Era</span>`
+            document.getElementById("datalunar").innerHTML = `${semanalunar[semanal]}, ${dia > 0 ? dia : '<span class="info" title="pridie kalendas">pk</span>'} ${meseslunares[leap][mes]} ${ano.toString().padStart(4, '0')} <span class="info" title="Joseph Justus Scaliger was the author of Sequencial Julian Day, with day zero at 24th November 4714 BCE. In this calendar day 1 is at 31st March 4713 BCE.">Scaliger Era</span>`
       }
       document.getElementById("datajuliana").innerText = `Julian date at noon: ${(sjd).toLocaleString('fr-FR')}`;
       return parseInt(sjd)
@@ -84,6 +83,7 @@ function julianoparagregoriano(sjd) {
       document.getElementById("datagregoriana").innerText = `${semanagregoriana[diadasemana]}, ${d} ${mesesgregorianos[m]} ${anostring.toString().padStart(4, '0')}`;
       document.getElementById("datajuliana").innerText = `Julian date at noon: ${(sjd).toLocaleString('fr-FR')}`;
 
+      console.log(`${y}-${m}-${d}`)
       return `${semanagregoriana[diadasemana]} ${d} ${mesesgregorianos[m]} ${anostring}`;
 }
 function gregorianoparajuliano(ano,mes,dia){
@@ -129,7 +129,7 @@ function gregorianoparajuliano(ano,mes,dia){
 
       let anostring = ano > 0 ? ano.toString().padStart(4, '0') + ' AD' : (1 - ano).toString().padStart(4, '0') + ' BCE';
    
-      document.getElementById("datagregoriana").innerText = `${semanagregoriana[diadasemana]}, ${dia} ${mesesgregorianos[mes]} ${anostring.toString().padStart(4, '0')}`;
+      document.getElementById("datagregoriana").innerHTML= `${semanagregoriana[diadasemana]}, ${dia > 0 ? dia : '<span class="info" title="pridie kalendas">pk</span>'} ${mesesgregorianos[mes]} ${anostring.toString().padStart(4, '0')}`;
       document.getElementById("datajuliana").innerText = `Julian date at noon: ${(sjd).toLocaleString('fr-FR')}`;
       return sjd
 }
@@ -154,7 +154,6 @@ function julianoparalunar(sjd) {
       let anociclo = ciclo(ano,cicloanos);
       if (anociclo == 0) {anociclo = cicloanos};
       let quantciclos = Math.floor((ano - 1) / cicloanos);
-      console.log(`quantciclos: ${quantciclos}; acucicloslunares[quantciclos]: ${acucicloslunares[quantciclos]}`)
       return Math.floor(quantciclos * ciclocompleto) + acuanoslunares[anociclo] + acucicloslunares[quantciclos];
     }
     let swdinicialanual = obterswdinicialanual(ano);
@@ -193,9 +192,11 @@ function julianoparalunar(sjd) {
     let dia = swd_anual - current_day;
     let semanal = resto(swd,7);
 
-    document.getElementById("datalunar").innerHTML = `${semanalunar[semanal]}, ${dia} ${meseslunares[leap][mes]} ${ano.toString().padStart(4, '0')} <span class="info" title="Joseph Justus Scaliger was the author of Sequencial Julian Day, with day zero at 24th November 4714 BCE. In this calendar day 1 is at 31st March 4713 BCE.">Scaliger Era</span>`;
+    document.getElementById("datalunar").innerHTML = `${semanalunar[semanal]}, ${dia > 0 ? dia : '<span class="info" title="pridie kalendas">pk</span>'} ${meseslunares[leap][mes]} ${ano.toString().padStart(4, '0')} <span class="info" title="Joseph Justus Scaliger was the author of Sequencial Julian Day, with day zero at 24th November 4714 BCE. In this calendar day 1 is at 31st March 4713 BCE.">Scaliger Era</span>`;
     document.getElementById("datajuliana").innerText = `Julian date at noon: ${(sjd).toLocaleString('fr-FR')}`;
-    return `${semanalunar[semanal]}, ${dia} ${meseslunares[leap][mes]} ${ano.toString().padStart(4, '0')} Scaliger Era`;
+    let texto = `${semanalunar[semanal]}, ${dia > 0 ? dia : 'pk'} ${meseslunares[leap][mes]} ${ano.toString().padStart(4, '0')} Scaliger Era`;
+    console.log(texto)
+    return texto;
 }
 function obtergregoriano(){
       ano = Number(document.getElementById('anolunar').value)

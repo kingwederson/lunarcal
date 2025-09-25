@@ -14,16 +14,19 @@ h2{
   margin: 0px;
   font-size: 18pt;
 }
+div.calculadoras{
+  width: 727px;
+}
 div.calculadora{
   display: block;
   padding: 30px;
   border: 1px solid black;
 }
 div.calculadora:nth-child(1){
-  background-color: #bed4ff;
+  background-color: #f0f0ff;
 }
 div.calculadora:nth-child(2){
-  background-color: #beffd4;
+  background-color: #f0f0ff;
 }
 select,
 input[type="text"],
