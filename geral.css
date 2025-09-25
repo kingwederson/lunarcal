@@ -15,7 +15,7 @@ h2{
   font-size: 18pt;
 }
 div.calculadora{
-  display: inline-block;
+  display: block;
   padding: 30px;
   border: 1px solid black;
 }
