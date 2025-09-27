@@ -163,7 +163,7 @@ function ssd_para_juliano(ssd) {
       let anostring = ano > 0 ? ano.toString().padStart(4, '0') + ' AD' : (1 - ano).toString().padStart(4, '0') + ' BCE';
 
       // Se preferir atualizar o HTML, use isso em vez do return:
-      document.getElementById("datajuliana").innerHTML = `${semana[diadasemana(ssd)]}, ${dia} ${mesesjulianos[mes]} ${anostring} JDN: ${ssd}`;
+      document.getElementById("datajuliana").innerHTML = `${semana[diadasemana(ssd)]}, ${dia} ${mesesjulianos[mes]} ${anostring}`;
 }
 function gregoriano_para_ssd(ano,mes,dia){
       if(document.getElementById("BCEgregoriano").checked && ano > 0){
