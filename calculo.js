@@ -8,9 +8,9 @@ function ciclo(dividendo,divisor){
 function diadasemana(ssd){
       return resto(ssd+2,7)
 }
-function numerodemeses(ano){
-      let resto = ( 1 + ( ano + 2 ) * 636 ) % 1727;
-      return resto < 636 ? 13 : 12;
+function numerodedias(ano,embs,ciclo,shift){
+      let resto = ( 1 + ( ano + shift ) * embs ) % ciclo;
+      return resto < embs ? 384 : 354;
 }
 
 const cicloanos = 1727
@@ -23,15 +23,26 @@ const sgdinicial = -32045
 const sjdinicial = -32080
 const jdninicial = 0
 
+// Split the single string into an array of individual codes
+const duranosmosaicosmax = duranosmosaicos.split("");
+
+// Generate acuanoslunares dynamically
+const acuanoslunares = ["índice 0", 0]; // Initialize with placeholder and 0
+for (let i = 1; i < duranosmosaicosmax.length; i++) {
+    let code = duranosmosaicosmax[i];
+    let dias = 354; // Base year length
+    if (code === "1") dias += 1;
+    if (code === "u") dias += 30;
+    acuanoslunares[i + 1] = acuanoslunares[i] + dias; // Offset by 1 due to placeholder
+}
+
 function mosaico_para_ssd(ano,mes,dia){
       let ciclocompleto = ciclodias
       let anociclo = ciclo(ano,cicloanos);
       let duracao = acuanoslunares[anociclo+1]-acuanoslunares[anociclo]
       let leap
       let quantciclos = Math.floor((ano - 1) / cicloanos);
-      let swd // dia sequencial do calendário lunissolar. Dia 1 é em 23 de março de 3998 B.C. (-3997).
-      let semanal
-      let sjd // dia sequencial da data juliana. Dia 0 é 24 de novembro d 4714 B.C. (-4713).
+      let swd // dia sequencial do calendário lunissolar. Dia 1 é em 31 de março de 4713 B.C. (-4712).
       let dia30
       let trocar13por12 = 0
       if(anociclo == 0){anociclo = cicloanos}
@@ -162,8 +173,10 @@ function ssd_para_juliano(ssd) {
 
       let anostring = ano > 0 ? ano.toString().padStart(4, '0') + ' AD' : (1 - ano).toString().padStart(4, '0') + ' BCE';
 
+      let comentario = ssd > 2299161 ? '<small>(date after Gregorian reform)<small>' : '';
+
       // Se preferir atualizar o HTML, use isso em vez do return:
-      document.getElementById("datajuliana").innerHTML = `${semana[diadasemana(ssd)]}, ${dia} ${mesesjulianos[mes]} ${anostring}`;
+      document.getElementById("datajuliana").innerHTML = `${semana[diadasemana(ssd)]}, ${dia} ${mesesjulianos[mes]} ${anostring} ${comentario}`;
 }
 function gregoriano_para_ssd(ano,mes,dia){
       if(document.getElementById("BCEgregoriano").checked && ano > 0){
@@ -225,16 +238,17 @@ function ssd_para_gregoriano(ssd) {
       //var dayStr = d < 10 ? '0' + d : d;
       //var monthStr = m < 10 ? '0' + m : m;
       let anostring = y > 0 ? y.toString().padStart(4, '0') + ' AD' : (1 - y).toString().padStart(4, '0') + ' BCE';
+      let comentario = ssd <= 2299161 ? '<small>(date before Gregorian reform)<small>' : '';
 
-      document.getElementById("datagregoriana").innerText = `${semana[diadasemana(ssd)]}, ${d} ${mesesgregorianos[m]} ${anostring.toString().padStart(4, '0')}`;
+      document.getElementById("datagregoriana").innerHTML = `${semana[diadasemana(ssd)]}, ${d} ${mesesgregorianos[m]} ${anostring.toString().padStart(4, '0')} ${comentario}`;
 }
-function jdn_para_sdd(jdn){
+function jdn_para_ssd(jdn){
       let ssd = jdn
       return ssd
 }
 function ssd_para_jdn(ssd){
       let jdn = ssd
-      document.getElementById("datajdn").innerText = `Julian Day Number at noon: ${(jdn).toLocaleString('fr-FR')}`;
+      document.getElementById("datajdn").innerText = `Julian Day Number: ${(jdn).toLocaleString('fr-FR')}`;
 }
 function deMOSAICO(){
       ano = Number(document.getElementById('anomosaico').value)
