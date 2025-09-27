@@ -40,11 +40,14 @@ input[type="number"]{
 select{
   width: 200px;
 }
-input#anolunar,input#anogregoriano{
+input#anomosaico,input#anojuliano,input#anogregoriano{
       width: 120px;
 }
-input#dialunar,input#diagregoriano{
+input#diamosaico,input#diajuliano,input#diagregoriano{
       width: 60px;
+}
+input#numerodiajuliano{
+  width:266px
 }
 button {
   padding: 8px 16px;
@@ -60,7 +63,7 @@ button:hover {
 }.button:active {
       transform: scale(0.95); /* Shrinks the button slightly */
 }
-button#butacaocalculagregoriana{
+button.botaocalculadatas{
   background-color: #4caf50;
 }
 p{
@@ -73,7 +76,7 @@ p.subtitle{
   text-align: center;
 }
 td.exibirdatas{
-  text-align: center;
+  text-align: justify;
 }
 b.roxo{
   color: purple;
@@ -84,6 +87,9 @@ span.info{
   cursor: pointer;
 }
 img.itemicon{
-  max-height: 42px;
+  max-height: 30px;
   max-width: 36px;
+}
+th,td{
+  border: 1px none black;
 }

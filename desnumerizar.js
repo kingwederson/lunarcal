@@ -1,10 +1,13 @@
 const meseslunares = [
-      ["index 0", "Nisan", "Ziv-Iyyar", "Sivan", "Tammuz", "Av", "Elul", "Tishrei", "Hereshvan", "Kislev", "Tevet", "Shevat", "Adar"],
-      ["index 0", "Nisan", "Ziv-Iyyar", "Sivan", "Tammuz", "Av", "Elul", "Tishrei", "Hereshvan", "Kislev", "Tevet", "Shevat", "Adar-A", "Adar-B"]
+      ["index 0", "Nisan", "Ziv", "Sivan", "Tammuz", "Av", "Elul", "Tishrei", "Heshvan", "Kislev", "Tevet", "Shevat", "Adar"],
+      ["index 0", "Nisan", "Ziv", "Sivan", "Tammuz", "Av", "Elul", "Tishrei", "Heshvan", "Kislev", "Tevet", "Shevat", "Adar-A", "Adar-B"]
 ]
-const semanalunar = ["Tuesday","Wednesday","Thursday","Friday","Sabbath","Sunday","Monday"]
+const semana = ["Sabbath","Sunday","Monday","Tuesday","Wednesday","Thursday","Friday"]
 
 // Conversão para gregoriano
 
 const mesesgregorianos = ["index 0","January","February","March","April","May","June","July","August","September","October","November","December"]
-const semanagregoriana = ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"]
+
+// Conversão para juliano
+
+const mesesjulianos = ["index 0","January","February","March","April","May","June","July","August","September","October","November","December"]

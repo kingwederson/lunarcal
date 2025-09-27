@@ -13,5 +13,8 @@ window.addEventListener('load', function() {
       anogregorianohoje.value = `${gregorianohoje.ano}`;
       mesgregorianohoje.value = `${gregorianohoje.mes}`;
       diagregorianohoje.value = `${gregorianohoje.dia}`;
-      julianoparalunar(gregorianoparajuliano(gregorianohoje.ano,gregorianohoje.mes,gregorianohoje.dia))
+      ssd_para_mosaico(gregoriano_para_ssd(gregorianohoje.ano,gregorianohoje.mes,gregorianohoje.dia))
+      ssd_para_juliano(gregoriano_para_ssd(gregorianohoje.ano,gregorianohoje.mes,gregorianohoje.dia))
+      ssd_para_jdn(gregoriano_para_ssd(gregorianohoje.ano,gregorianohoje.mes,gregorianohoje.dia))
+      ssd_para_gregoriano(gregoriano_para_ssd(gregorianohoje.ano,gregorianohoje.mes,gregorianohoje.dia))
 });
