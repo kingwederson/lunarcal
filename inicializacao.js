@@ -12,10 +12,16 @@ window.addEventListener('load', function() {
       const mesgregorianohoje = document.getElementById('mesgregoriano');
       const diagregorianohoje = document.getElementById('diagregoriano');
 
+      // Input Masaic
+
+      const anomosaicohoje = document.getElementById('anomosaico');
+
       // Define a opção com o valor como a selecionada
       anogregorianohoje.value = `${gregorianohoje.ano}`;
       mesgregorianohoje.value = `${gregorianohoje.mes}`;
       diagregorianohoje.value = `${gregorianohoje.dia}`;
+
+      anomosaicohoje.value = `${gregorianohoje.ano + 3959}`;
 
       ssd_para_mosaico(gregoriano_para_ssd(gregorianohoje.ano,gregorianohoje.mes,gregorianohoje.dia))
       ssd_para_juliano(gregoriano_para_ssd(gregorianohoje.ano,gregorianohoje.mes,gregorianohoje.dia))
