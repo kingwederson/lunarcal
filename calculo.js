@@ -32,7 +32,7 @@ var dataslog = {
       jdn: 2449051
 }
 
-const cicloanos = 1727
+const cicloanos = 10364
 const ciclomeses = 21360
 const anotropical = 365.2421896698
 const messinodico = 29.530588853
@@ -98,8 +98,8 @@ function ssd_para_mosaico(ssd) {
       }
     let swd = ssd - swdinicial;
     if (swd < 1) {
-        document.getElementById("datamosaica").innerText = "Date before epoch.";
-        return "Date before epoch.";
+        document.getElementById("datamosaica").innerText = "Date out of range data.";
+        return "Date out of range data.";
     }
     let ciclocompleto = ciclodias;
     let ano = Math.floor(swd / anotropical) + 1;
@@ -119,6 +119,7 @@ function ssd_para_mosaico(ssd) {
         ano++;
         swdinicialanual = obterswdinicialanual(ano);
     }
+
     let swd_anual = swd - swdinicialanual;  // O erro está a partir daqui.
     let anociclo = resto(ano,cicloanos);
     if (anociclo === 0) {anociclo = cicloanos};
@@ -149,10 +150,10 @@ function ssd_para_mosaico(ssd) {
 
     let complemento
     if(ano <= 0){
-      complemento = 'BAM'
+      complemento = 'Before Epoch'
       ano = (-1)*ano+1
     }else if(ano > 0){
-      complemento = 'Anno Mundi'
+      complemento = 'AM'
     }
 
       //document.getElementById("anomosaico").value = ano
@@ -315,10 +316,12 @@ function deJDN(){
       ssd_para_jdn(jdn_para_ssd(jdn))
 }
 function converter(tipo,ano,mes,dia){
-      if(tipo=="l"){
-            return jdn_para_gregoriano(mosaico_para_jdn(ano,mes,dia))
+      if(tipo=="m"){
+            return ssd_para_gregoriano(mosaico_para_ssd(ano,mes,dia))
       }else if(tipo=="g"){
-            return jdn_para_mosaico(gregoriano_para_jdn(ano,mes,dia))
+            return ssd_para_mosaico(gregoriano_para_ssd(ano,mes,dia))
+      }else if(tipo=="j"){
+            return ssd_para_mosaico(juliano_para_ssd(ano,mes,dia))
       }
-      
+     
 }
