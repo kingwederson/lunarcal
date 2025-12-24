@@ -1,0 +1,936 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2026 Calendar</title>
+    <meta property="og:title" content="Google Fonts: Russo One">
+    <style>/*
+        :root {
+            --fundo: white;
+
+            --destaque: #004;
+            --contraste: #fff;
+            
+            --feriado-c: #004;
+            --folga-c: #000;
+            --normal-c:#000;
+            --inativo-c: #000;
+
+            --feriado-f:#aaf;
+            --folga-f: #aaf;
+            --normal-f:#8f03;
+            --inativo-f: #ff03;
+        }*/
+        :root {
+            --fundo: white;
+
+            --destaque: #004;
+            --contraste: #fff;
+            
+            --feriado-c: #004;
+            --folga-c: #fff;
+            --normal-c:#000;
+            --inativo-c: #000;
+
+            --feriado-f:#aaf;
+            --folga-f: #004;
+            --normal-f:#ffd;
+            --inativo-f: #ffd;
+        }
+        body{
+            font-family: 'Russo One';
+            font-size: 16pt;
+            background-color: var(--fundo);
+        }
+        table tr:nth-child(1) td{
+            color:var(--contraste);
+            background-color: var(--destaque);
+        }
+        div#ano{
+            margin:auto;
+            text-align: center;
+        }
+        h1{
+            font-size:3em;
+            text-align: center;
+            color:var(--destaque);
+        }
+        table.month{
+            border: 3px solid var(--destaque);
+            counter-reset: datemonth;
+            display:inline-block;
+        }
+        td.headmonth{
+            font-size: 1.5em;
+            color:var(--destaque) !important;
+            background-color: var(--contraste) !important;
+        }
+        td{
+            text-align: center;
+            border:1px solid #00000030;
+            min-width:42px;
+        }
+        td.date{
+            border-color:var(--normal-c);
+            background-color: var(--normal-f);
+            color:var(--normal-c);
+        }
+        td.date.bd,tr td.date:nth-child(7){
+            border-color:var(--feriado-c);
+            background-color: var(--feriado-f);
+            color:var(--feriado-c);
+        }
+        td.date.hd{
+            border-color:var(--feriado-c);
+            background-color: var(--feriado-f);
+            color:var(--feriado-c);
+        }
+        td.date.folga{
+            border-color: var(--folga-c);
+            background-color: var(--folga-f);
+            color: var(--folga-c);
+        }
+        td.date.inativo{
+            border-color: var(--inativo-c);
+            background-color: var(--inativo-f);
+            color: var(--inativo-c);
+        }
+        td.date:nth-child(8).folga{
+            border-color: var(--feriado-c);
+            background-color: var(--feriado-f);
+            color: var(--feriado-c);
+        }
+        td.date:hover{
+            color: black;
+            background-color:yellow;
+            transition: 2s;
+        }
+        td.date.bd:hover,td.date.hd:hover,td.date.folga:hover,td.date:nth-child(7):hover{
+            background-color: var(--destaque);
+            color:white;
+            transition: 2s;
+        }
+        tr.weekdays{
+            color:white; 
+            background-color:var(--destaque);
+            border: 1px var(--destaque) solid;
+            font-size: 0.7em;
+        }
+        tr.weekdays td:nth-child(7){
+            color:white;
+        }
+        tr td:nth-child(7){
+            color:var(--destaque);
+        }
+        td.date::after {
+            counter-increment: datemonth;
+            content: counter(datemonth);
+        }
+        lua{
+            font-family: 'Moon Phases';
+        }
+        td.lunar{
+            font-size: 1em;
+            color:var(--destaque);
+        }
+    </style>
+    <script>/*
+        function diasvar(){
+        var hoje = new Date();
+        var last = new Date('2023-01-01 00:00');
+        var diasdesde = parseInt(Math.abs((hoje-last)/86400000));
+        window.document.getElementsByClassName("date")[diasdesde].style.borderColor = 'red';
+            if(hoje>new Date('2026-03-04')){
+                window.document.getElementsByClassName("date")[diasdesde+284].style.borderColor = 'red';
+            }
+        }*/
+    </script>
+</head>
+<body onload="diasvar()">
+    <hr style="width:297mm;">
+    <div id="ano">
+        <h1>2026 AD</h1>
+        <!--JANUARY-->
+        <table class="month">
+            <tr>
+                <td class="headmonth" colspan="7">2026 JANUARY</td>
+            </tr>
+            <tr class="weekdays">
+                <td>SUN</td>
+                <td>MON</td>
+                <td>TUE</td>
+                <td>WED</td>
+                <td>THU</td>
+                <td>FRI</td>
+                <td>SAB</td>
+            </tr>
+            <tr>
+                <td class=""></td>
+                <td class=""></td>
+                <td class=""></td>
+                <td class=""></td>
+                <td class="date hd"></td>
+                <td class="date"></td>
+                <td class="date"></td>
+            </tr>
+            <tr>
+                <td class="date"></td>
+                <td class="date"></td>
+                <td class="date"></td>
+                <td class="date"></td>
+                <td class="date"></td>
+                <td class="date"></td>
+                <td class="date"></td>
+            </tr>
+            <tr>
+                <td class="date"></td>
+                <td class="date"></td>
+                <td class="date"></td>
+                <td class="date"></td>
+                <td class="date"></td>
+                <td class="date"></td>
+                <td class="date"></td>
+            </tr>
+            <tr>
+                <td class="date"></td>
+                <td class="date"></td>
+                <td class="date"></td>
+                <td class="date"></td>
+                <td class="date"></td>
+                <td class="date"></td>
+                <td class="date"></td>
+            </tr>
+            <tr>
+                <td class="date"></td>
+                <td class="date"></td>
+                <td class="date"></td>
+                <td class="date"></td>
+                <td class="date"></td>
+                <td class="date"></td>
+                <td class="date"></td>
+            </tr>
+            <tr>
+                <td class=""></td>
+                <td class=""></td>
+                <td colspan="5" class="lunar">3🌕 10🌓 18🌑 26🌗</td>
+            </tr>
+        </table>
+        <!--FEBRUARY-->
+        <table class="month">
+            <tr>
+                <td class="headmonth" colspan="7">2026 FEBRUARY</td>
+            </tr>
+            <tr class="weekdays">
+                <td>SUN</td>
+                <td>MON</td>
+                <td>TUE</td>
+                <td>WED</td>
+                <td>THU</td>
+                <td>FRI</td>
+                <td>SAB</td>
+            </tr>
+            <tr>
+                <td class="date" title=""></td>
+                <td class="date"></td>
+                <td class="date"></td>
+                <td class="date"></td>
+                <td class="date"></td>
+                <td class="date"></td>
+                <td class="date"></td>
+            </tr>
+            <tr>
+                <td class="date"></td>
+                <td class="date"></td>
+                <td class="date"></td>
+                <td class="date"></td>
+                <td class="date"></td>
+                <td class="date"></td>
+                <td class="date"></td>
+            </tr>
+            <tr>
+                <td class="date"></td>
+                <td class="date"></td>
+                <td class="date hd" title="Carnival &#010; Shorve Tuesday"></td>
+                <td class="date"></td>
+                <td class="date"></td>
+                <td class="date"></td>
+                <td class="date"></td>
+            </tr>
+            <tr>
+                <td class="date"></td>
+                <td class="date"></td>
+                <td class="date"></td>
+                <td class="date"></td>
+                <td class="date"></td>
+                <td class="date"></td>
+                <td class="date"></td>
+            </tr>
+            <tr>
+                <td class="">&nbsp;</td>
+                <td class=""></td>
+                <td class=""></td>
+                <td class=""></td>
+                <td class=""></td>
+                <td class=""></td>
+                <td class=""></td>
+            </tr>
+            <tr>
+                <td class=""></td>
+                <td class=""></td>
+                <td colspan="5" class="lunar">2🌕 9🌓 17🌑 24🌗</td>
+            </tr>
+        </table>
+        <!--MARCH-->
+        <table class="month">
+            <tr>
+                <td class="headmonth" colspan="7">2026 MARCH</td>
+            </tr>
+            <tr class="weekdays">
+                <td>SUN</td>
+                <td>MON</td>
+                <td>TUE</td>
+                <td>WED</td>
+                <td>THU</td>
+                <td>FRI</td>
+                <td>SAB</td>
+            </tr>
+            <tr>
+                <td class="date hd" title="Olaria's Day"></td>
+                <td class="date"></td>
+                <td class="date" title="(O) Purim"></td>
+                <td class="date" title="Wederson's Birthday"></td>
+                <td class="date" title="Alessandra's Birthday"></td>
+                <td class="date"></td>
+                <td class="date"></td>
+            </tr>
+            <tr>
+                <td class="date"></td>
+                <td class="date"></td>
+                <td class="date"></td>
+                <td class="date"></td>
+                <td class="date"></td>
+                <td class="date"></td>
+                <td class="date"></td>
+            </tr>
+            <tr>
+                <td class="date"></td>
+                <td class="date"></td>
+                <td class="date"></td>
+                <td class="date"></td>
+                <td class="date"></td>
+                <td class="date"></td>
+                <td class="date"></td>
+            </tr>
+            <tr>
+                <td class="date"></td>
+                <td class="date"></td>
+                <td class="date"></td>
+                <td class="date"></td>
+                <td class="date"></td>
+                <td class="date"></td>
+                <td class="date"></td>
+            </tr>
+            <tr>
+                <td class="date"></td>
+                <td class="date"></td>
+                <td class="date"></td>
+                <td class=""></td>
+                <td class=""></td>
+                <td class=""></td>
+                <td class=""></td>
+            </tr>
+            <tr>
+                <td class=""></td>
+                <td class=""></td>
+                <td colspan="5" class="lunar">3🌕 11🌓 19🌑 25🌗</td>
+            </tr>
+        </table>
+        <!--APRIL-->
+        <table class="month">
+            <tr>
+                <td class="headmonth" colspan="7">2026 APRIL</td>
+            </tr>
+            <tr class="weekdays">
+                <td>SUN</td>
+                <td>MON</td>
+                <td>TUE</td>
+                <td>WED</td>
+                <td>THU</td>
+                <td>FRI</td>
+                <td>SAB</td>
+            </tr>
+            <tr>
+                <td class=""></td>
+                <td class=""></td>
+                <td class=""></td>
+                <td class="date" title="(K) Purim"></td>
+                <td class="date"></td>
+                <td class="date hd" title="Good Friday"></td>
+                <td class="date"></td>
+            </tr>
+            <tr>
+                <td class="date"></td>
+                <td class="date"></td>
+                <td class="date"></td>
+                <td class="date"></td>
+                <td class="date"></td>
+                <td class="date"></td>
+                <td class="date"></td>
+            </tr>
+            <tr>
+                <td class="date"></td>
+                <td class="date"></td>
+                <td class="date"></td>
+                <td class="date"></td>
+                <td class="date"></td>
+                <td class="date"></td>
+                <td class="date"></td>
+            </tr>
+            <tr>
+                <td class="date"></td>
+                <td class="date"></td>
+                <td class="date hd" title="Tiradentes"></td>
+                <td class="date"></td>
+                <td class="date"></td>
+                <td class="date"></td>
+                <td class="date"></td>
+            </tr>
+            <tr>
+                <td class="date"></td>
+                <td class="date"></td>
+                <td class="date"></td>
+                <td class="date"></td>
+                <td class="date"></td>
+                <td class=""></td>
+                <td class=""></td>
+            </tr>
+            <tr>
+                <td class=""></td>
+                <td class=""></td>
+                <td colspan="5" class="lunar">2🌕 10🌓 17🌑 24🌗</td>
+            </tr>
+        </table>
+        <!--MAY-->
+        <table class="month">
+            <tr>
+                <td class="headmonth" colspan="7">2026 MAY</td>
+            </tr>
+            <tr class="weekdays">
+                <td>SUN</td>
+                <td>MON</td>
+                <td>TUE</td>
+                <td>WED</td>
+                <td>THU</td>
+                <td>FRI</td>
+                <td>SAB</td>
+            </tr>
+            <tr>
+                <td class=""></td>
+                <td class=""></td>
+                <td class=""></td>
+                <td class=""></td>
+                <td class=""></td>
+                <td class="date hd" title="(K) Pesach I&#010;No Labor Day"></td>
+                <td class="date" title="(K) Pesach II"></td>
+            </tr>
+            <tr>
+                <td class="date" title="(K) Pesach III"></td>
+                <td class="date" title="(K) Pesach IV"></td>
+                <td class="date" title="(K) Pesach V"></td>
+                <td class="date" title="(K) Pesach VI"></td>
+                <td class="date hd" title="(K) Pesach VII"></td>
+                <td class="date"></td>
+                <td class="date"></td>
+            </tr>
+            <tr>
+                <td class="date hd" title="Mother's Day"></td>
+                <td class="date"></td>
+                <td class="date"></td>
+                <td class="date"></td>
+                <td class="date"></td>
+                <td class="date"></td>
+                <td class="date"></td>
+            </tr>
+            <tr>
+                <td class="date"></td>
+                <td class="date"></td>
+                <td class="date"></td>
+                <td class="date"></td>
+                <td class="date"></td>
+                <td class="date"></td>
+                <td class="date"></td>
+            </tr>
+            <tr>
+                <td class="date" title="Catholic Pentecost"></td>
+                <td class="date"></td>
+                <td class="date"></td>
+                <td class="date"></td>
+                <td class="date"></td>
+                <td class="date"></td>
+                <td class="date"></td>
+            </tr>
+            <tr>
+                <td class="date"></td>
+                <td colspan="6" class="lunar">1🌕 10🌓 16🌑 23🌗 31🌕</td>
+            </tr>
+        </table>
+        <!--JUNE-->
+        <table class="month">
+            <tr>
+                <td class="headmonth" colspan="7">2026 JUNE</td>
+            </tr>
+            <tr class="weekdays">
+                <td>SUN</td>
+                <td>MON</td>
+                <td>TUE</td>
+                <td>WED</td>
+                <td>THU</td>
+                <td>FRI</td>
+                <td>SAB</td>
+            </tr>
+            <tr>
+                <td class=""></td>
+                <td class="date"></td>
+                <td class="date"></td>
+                <td class="date"></td>
+                <td class="date hd" title="Corpus Christi"></td>
+                <td class="date"></td>
+                <td class="date"></td>
+            </tr>
+            <tr>
+                <td class="date"></td>
+                <td class="date"></td>
+                <td class="date"></td>
+                <td class="date"></td>
+                <td class="date"></td>
+                <td class="date"></td>
+                <td class="date"></td>
+            </tr>
+            <tr>
+                <td class="date"></td>
+                <td class="date"></td>
+                <td class="date"></td>
+                <td class="date"></td>
+                <td class="date"></td>
+                <td class="date"></td>
+                <td class="date hd" title="(K) Shavuot"></td>
+            </tr>
+            <tr>
+                <td class="date"></td>
+                <td class="date"></td>
+                <td class="date"></td>
+                <td class="date"></td>
+                <td class="date"></td>
+                <td class="date"></td>
+                <td class="date"></td>
+            </tr>
+            <tr>
+                <td class="date"></td>
+                <td class="date"></td>
+                <td class="date"></td>
+                <td class=""></td>
+                <td class=""></td>
+                <td class=""></td>
+                <td class=""></td>
+            </tr>
+            <tr>
+                <td class=""></td>
+                <td class=""></td>
+                <td colspan="5" class="lunar">8🌓 15🌑 22🌗 30🌕</td>
+            </tr>
+        </table>
+        <!--JULY-->
+        <table class="month">
+            <tr>
+                <td class="headmonth" colspan="7">2026 JULY</td>
+            </tr>
+            <tr class="weekdays">
+                <td>SUN</td>
+                <td>MON</td>
+                <td>TUE</td>
+                <td>WED</td>
+                <td>THU</td>
+                <td>FRI</td>
+                <td>SAB</td>
+            </tr>
+            <tr>
+                <td class=""></td>
+                <td class=""></td>
+                <td class=""></td>
+                <td class="date"></td>
+                <td class="date"></td>
+                <td class="date"></td>
+                <td class="date"></td>
+            </tr>
+            <tr>
+                <td class="date"></td>
+                <td class="date"></td>
+                <td class="date"></td>
+                <td class="date"></td>
+                <td class="date"></td>
+                <td class="date"></td>
+                <td class="date"></td>
+            </tr>
+            <tr>
+                <td class="date"></td>
+                <td class="date"></td>
+                <td class="date"></td>
+                <td class="date"></td>
+                <td class="date"></td>
+                <td class="date"></td>
+                <td class="date"></td>
+            </tr>
+            <tr>
+                <td class="date"></td>
+                <td class="date"></td>
+                <td class="date"></td>
+                <td class="date"></td>
+                <td class="date"></td>
+                <td class="date"></td>
+                <td class="date"></td>
+            </tr>
+            <tr>
+                <td class="date"></td>
+                <td class="date"></td>
+                <td class="date"></td>
+                <td class="date"></td>
+                <td class="date"></td>
+                <td class="date"></td>
+                <td class=""></td>
+            </tr>
+            <tr>
+                <td class=""></td>
+                <td class=""></td>
+                <td colspan="5" class="lunar">7🌓 14🌑 21🌗 29🌕</td>
+            </tr>
+        </table>
+        <!--AUGUST-->
+        <table class="month">
+            <tr>
+                <td class="headmonth" colspan="7">2026 AUGUST</td>
+            </tr>
+            <tr class="weekdays">
+                <td>SUN</td>
+                <td>MON</td>
+                <td>TUE</td>
+                <td>WED</td>
+                <td>THU</td>
+                <td>FRI</td>
+                <td>SAB</td>
+            </tr>
+            <tr>
+                <td class=""></td>
+                <td class=""></td>
+                <td class=""></td>
+                <td class=""></td>
+                <td class=""></td>
+                <td class=""></td>
+                <td class="date"></td>
+            </tr>
+            <tr>
+                <td class="date"></td>
+                <td class="date"></td>
+                <td class="date"></td>
+                <td class="date"></td>
+                <td class="date"></td>
+                <td class="date"></td>
+                <td class="date"></td>
+            </tr>
+            <tr>
+                <td class="date hd" title="Father's Day"></td>
+                <td class="date"></td>
+                <td class="date"></td>
+                <td class="date"></td>
+                <td class="date"></td>
+                <td class="date"></td>
+                <td class="date"></td>
+            </tr>
+            <tr>
+                <td class="date"></td>
+                <td class="date"></td>
+                <td class="date"></td>
+                <td class="date"></td>
+                <td class="date"></td>
+                <td class="date"></td>
+                <td class="date"></td>
+            </tr>
+            <tr>
+                <td class="date"></td>
+                <td class="date"></td>
+                <td class="date"></td>
+                <td class="date"></td>
+                <td class="date"></td>
+                <td class="date"></td>
+                <td class="date"></td>
+            </tr>
+            <tr>
+                <td class="date"></td>
+                <td class="date"></td>
+                <td colspan="5" class="lunar">6🌓 12🌑 20🌗 28🌕</td>
+            </tr>
+        </table>
+        <!--SETEMBER-->
+        <table class="month">
+            <tr>
+                <td class="headmonth" colspan="7">2026 SEPTEMBER</td>
+            </tr>
+            <tr class="weekdays">
+                <td>SUN</td>
+                <td>MON</td>
+                <td>TUE</td>
+                <td>WED</td>
+                <td>THU</td>
+                <td>FRI</td>
+                <td>SAB</td>
+            </tr>
+            <tr>
+                <td class=""></td>
+                <td class=""></td>
+                <td class="date"></td>
+                <td class="date"></td>
+                <td class="date"></td>
+                <td class="date"></td>
+                <td class="date"></td>
+            </tr>
+            <tr>
+                <td class="date"></td>
+                <td class="date hd" title="Independence Day"></td>
+                <td class="date"></td>
+                <td class="date"></td>
+                <td class="date"></td>
+                <td class="date"></td>
+                <td class="date"></td>
+            </tr>
+            <tr>
+                <td class="date"></td>
+                <td class="date"></td>
+                <td class="date"></td>
+                <td class="date"></td>
+                <td class="date"></td>
+                <td class="date"></td>
+                <td class="date"></td>
+            </tr>
+            <tr>
+                <td class="date"></td>
+                <td class="date"></td>
+                <td class="date"></td>
+                <td class="date"></td>
+                <td class="date"></td>
+                <td class="date"></td>
+                <td class="date"></td>
+            </tr>
+            <tr>
+                <td class="date"></td>
+                <td class="date"></td>
+                <td class="date"></td>
+                <td class="date"></td>
+                <td class=""></td>
+                <td class=""></td>
+                <td class=""></td>
+            </tr>
+            <tr>
+                <td class=""></td>
+                <td class=""></td>
+                <td colspan="5" class="lunar">4🌓 11🌑 18🌗 26🌕</td>
+            </tr>
+        </table>
+        <!--OCTOBER-->
+        <table class="month">
+            <tr>
+                <td class="headmonth" colspan="7">2026 OCTOBER</td>
+            </tr>
+            <tr class="weekdays">
+                <td>SUN</td>
+                <td>MON</td>
+                <td>TUE</td>
+                <td>WED</td>
+                <td>THU</td>
+                <td>FRI</td>
+                <td>SAB</td>
+            </tr>
+            <tr>
+                <td class=""></td>
+                <td class=""></td>
+                <td class=""></td>
+                <td class=""></td>
+                <td class="date"></td>
+                <td class="date"></td>
+                <td class="date"></td>
+            </tr>
+            <tr>
+                <td class="date"></td>
+                <td class="date"></td>
+                <td class="date"></td>
+                <td class="date"></td>
+                <td class="date"></td>
+                <td class="date" title=""></td>
+                <td class="date" title=""></td>
+            </tr>
+            <tr>
+                <td class="date hd" title="(K) Yom Teruah"></td>
+                <td class="date hd" title="Kid's Day"></td>
+                <td class="date" title=""></td>
+                <td class="date" title=""></td>
+                <td class="date" title=""></td>
+                <td class="date" title=""></td>
+                <td class="date"></td>
+            </tr>
+            <tr>
+                <td class="date" title=""></td>
+                <td class="date"></td>
+                <td class="date hd" title="(K) Yom Kippur"></td>
+                <td class="date"></td>
+                <td class="date"></td>
+                <td class="date"></td>
+                <td class="date"></td>
+            </tr>
+            <tr>
+                <td class="date hd" title="(K) Sukkot I"></td>
+                <td class="date" title="(K) Sukkot II"></td>
+                <td class="date" title="(K) Sukkot III"></td>
+                <td class="date" title="(K) Sukkot IV"></td>
+                <td class="date" title="(K) Sukkot V"></td>
+                <td class="date" title="(K) Sukkot VI"></td>
+                <td class="date" title="(K) Sukkot VII"></td>
+            </tr>
+            <tr>
+                <td class=""></td>
+                <td class=""></td>
+                <td colspan="5" class="lunar">3🌓 10🌑 18🌗 26🌕</td>
+            </tr>
+        </table>
+        <!--NOVEMBER-->
+        <table class="month">
+            <tr>
+                <td class="headmonth" colspan="7">2026 NOVEMBER</td>
+            </tr>
+            <tr class="weekdays">
+                <td>SUN</td>
+                <td>MON</td>
+                <td>TUE</td>
+                <td>WED</td>
+                <td>THU</td>
+                <td>FRI</td>
+                <td>SAB</td>
+            </tr>
+            <tr>
+                <td class="date"></td>
+                <td class="date hd" title="All Souls' Day"></td>
+                <td class="date"></td>
+                <td class="date"></td>
+                <td class="date"></td>
+                <td class="date"></td>
+                <td class="date"></td>
+            </tr>
+            <tr>
+                <td class="date"></td>
+                <td class="date"></td>
+                <td class="date"></td>
+                <td class="date"></td>
+                <td class="date"></td>
+                <td class="date"></td>
+                <td class="date"></td>
+            </tr>
+            <tr>
+                <td class="date"></td>
+                <td class="date"></td>
+                <td class="date"></td>
+                <td class="date"></td>
+                <td class="date"></td>
+                <td class="date hd" title="Black Awareness Day"></td>
+                <td class="date"></td>
+            </tr>
+            <tr>
+                <td class="date"></td>
+                <td class="date"></td>
+                <td class="date"></td>
+                <td class="date"></td>
+                <td class="date"></td>
+                <td class="date"></td>
+                <td class="date"></td>
+            </tr>
+            <tr>
+                <td class="date"></td>
+                <td class="date"></td>
+                <td class=""></td>
+                <td class=""></td>
+                <td class=""></td>
+                <td class=""></td>
+                <td class=""></td>
+            </tr>
+            <tr>
+                <td class=""></td>
+                <td class=""></td>
+                <td colspan="5" class="lunar">1🌓 9🌑 17🌗 24🌕</td>
+            </tr>
+        </table>
+        <!--DECEMBER-->
+        <table class="month">
+            <tr>
+                <td class="headmonth" colspan="7">2026 DECEMBER</td>
+            </tr>
+            <tr class="weekdays">
+                <td>SUN</td>
+                <td>MON</td>
+                <td>TUE</td>
+                <td>WED</td>
+                <td>THU</td>
+                <td>FRI</td>
+                <td>SAB</td>
+            </tr>
+            <tr>
+                <td class=""></td>
+                <td class=""></td>
+                <td class="date"></td>
+                <td class="date"></td>
+                <td class="date"></td>
+                <td class="date"></td>
+                <td class="date"></td>
+            </tr>
+            <tr>
+                <td class="date"></td>
+                <td class="date"></td>
+                <td class="date"></td>
+                <td class="date"></td>
+                <td class="date"></td>
+                <td class="date"></td>
+                <td class="date"></td>
+            </tr>
+            <tr>
+                <td class="date"></td>
+                <td class="date"></td>
+                <td class="date" title=""></td>
+                <td class="date"></td>
+                <td class="date"></td>
+                <td class="date"></td>
+                <td class="date"></td>
+            </tr>
+            <tr>
+                <td class="date"></td>
+                <td class="date"></td>
+                <td class="date"></td>
+                <td class="date"></td>
+                <td class="date"></td>
+                <td class="date hd" title="Natalis Solis Invicti"></td>
+                <td class="date"></td>
+            </tr>
+            <tr>
+                <td class="date"></td>
+                <td class="date"></td>
+                <td class="date"></td>
+                <td class="date"></td>
+                <td class="date"></td>
+                <td class=""></td>
+                <td class=""></td>
+            </tr>
+            <tr>
+                <td class=""></td>
+                <td colspan="6" class="lunar">1🌓 9🌑 17🌗 24🌕 30🌓</td>
+            </tr>
+        </table>
+    </div>
+
+</body>
+</html>
